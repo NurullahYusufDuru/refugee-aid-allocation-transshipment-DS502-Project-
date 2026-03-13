@@ -14,7 +14,7 @@ to refugee camps under uncertain demand and replenishment cycles.
 
 ## Project Goals
 
-1. Replicate the allocation model using the provided parameter files.
+1. Replicate the allocation model using the parameter files.
 2. Implement the piecewise linear MILP formulation described in the paper.
 3. Extend the model by introducing lateral transshipment between camps.
 
