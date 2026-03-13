@@ -45,6 +45,32 @@ The extended model includes:
 - inventory balance constraints
 - transshipment feasibility constraints
 
+## Planned Experiments
+
+The experiments will focus on small-scale instances in order to keep the computational complexity manageable.
+
+### Experiment Factors
+
+The following parameters will be varied:
+
+- **Total supply level (S)**  
+  Different supply levels will be tested to observe how allocation decisions change when the system becomes more or less resource constrained.
+
+- **Transshipment cost (c_ij)**  
+  Several transshipment cost levels will be considered to evaluate when inventory transfers between camps become beneficial.
+
+- **Demand**  
+  Instances with different internal and external demand rates across camps will be generated to analyze how demand imbalance affects transshipment decisions.
+
+### Performance Metrics
+
+For each experiment run, the following metrics will be recorded:
+
+- total system cost
+- allocation levels for each camp
+- transshipment quantities between camps
+- solver runtime
+
 ## Repository Structure
 
 data/
