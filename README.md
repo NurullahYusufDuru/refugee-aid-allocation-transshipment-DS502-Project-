@@ -1,5 +1,8 @@
 # Aid Allocation with Lateral Transshipment
 
+# Pathway
+
+Path A – Replication and Extension of a Research Paper
 This project replicates and extends the model proposed in:
 
 Azizi et al. (2021)
