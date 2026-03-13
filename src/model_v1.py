@@ -63,7 +63,7 @@ def build_model(camps, supply, initial_inventory=None, transshipment_cost=None):
     # Later this can be replaced by:
     # piecewise expected cost evaluated at s[i]
     model.setObjective(
-        quicksum(X[i] for i in camps) +
+        quicksum(X[i] - initial_inventory[i] for i in camps) +
         quicksum(transshipment_cost[i, j] * T[i, j] for i, j in T.keys()),
         GRB.MINIMIZE
     )
