@@ -83,6 +83,7 @@ This project requires:
 - Python packages:
   - pandas
   - gurobipy
+---
 
 Original link to paper:
 Azizi, S., Bozkir, C. D. C., Trapp, A. C., Kundakcioglu, O. E., & Kurbanzade, A. K. (2021). Aid Allocation for Camp‐Based and Urban Refugees with Uncertain Demand and Replenishments. Production and Operations Management, 30(12), 4455-4474. https://doi.org/10.1111/poms.13531 (Original work published 2021)
