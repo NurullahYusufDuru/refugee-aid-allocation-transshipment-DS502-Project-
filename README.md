@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements a simplified optimization model for allocating humanitarian aid across multiple refugee camps under demand uncertainty.
+This project implements a simplified optimization model for allocating humanitarian aid across multiple refugee camps.
 
 The model is based on the paper:
 
@@ -44,15 +44,6 @@ The model minimizes total cost:
 
 ---
 
-## Key Modeling Features
-
-### 1. Internal Demand Priority
-Internal demand is always satisfied first. External demand is served using the remaining inventory.
-
-### 2. Linear Formulation
-All nonlinear relationships are linearized using auxiliary variables, making the model solvable with standard LP solvers.
-
----
 
 ## Data
 
