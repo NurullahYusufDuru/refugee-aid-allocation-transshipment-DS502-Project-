@@ -68,9 +68,9 @@ Runtime: 0.0010 seconds
 
 Key observations:
 
-All internal demand is satisfied
-Some external demand remains unmet
-No leftover inventory (all supply is used)
+-All internal demand is satisfied
+-Some external demand remains unmet
+-No leftover inventory (all supply is used)
 
 
 
