@@ -49,7 +49,7 @@ The model minimizes total cost:
 ### 1. Internal Demand Priority
 Internal demand is always satisfied first. External demand is served using the remaining inventory.
 
-### 3. Linear Formulation
+### 2. Linear Formulation
 All nonlinear relationships are linearized using auxiliary variables, making the model solvable with standard LP solvers.
 
 ---
