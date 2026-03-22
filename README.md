@@ -28,9 +28,9 @@ A key assumption in this implementation is that:
 ## Decision Variables
 
 - `X[i]`: allocation to camp *i*
-- `u[i]`: unmet internal demand
-- `r[i]`: rejected external demand
-- `l[i]`: leftover inventory
+- `u[i]`: unmet internal demand (auxillary)
+- `r[i]`: rejected external demand (auxillary)
+- `l[i]`: leftover inventory (auxillary)
 
 ---
 
