@@ -59,7 +59,7 @@ The model uses two input files:
   - referral cost
 
 ---
-##Example Results
+## Example Results
 
 For a test instance with total supply = 100,000:
 
