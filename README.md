@@ -1,99 +1,75 @@
-# Aid Allocation with Lateral Transshipment
+# Humanitarian Aid Allocation Model
 
-## Pathway
+## Overview
 
-Path A – Replication and Extension of a Research Paper
+This project implements a simplified optimization model for allocating humanitarian aid across multiple refugee camps under demand uncertainty.
 
-This project replicates and extends the model proposed in:
+The model is based on the paper:
 
-Azizi et al. (2021)
-"Aid Allocation for Camp-Based and Urban Refugees with Uncertain Demand and Replenishments"
+> *Azizi et al. (2021) – Aid Allocation for Camp-Based and Urban Refugees with Uncertain Demand and Replenishments*
 
-The original model studies optimal allocation of humanitarian aid
-to refugee camps under uncertain demand and replenishment cycles.
+The goal is to determine how a central decision-maker should distribute limited inventory to minimize the total cost associated with unmet demand and inventory holding.
 
-## Project Goals
+---
 
-1. Replicate the allocation model using the parameter files.
-2. Implement the piecewise linear MILP formulation described in the paper.
-3. Extend the model by introducing lateral transshipment between camps.
+## Model Description
 
-## Model Overview
+The model considers:
 
-### Original Model
+- **Internal demand** (camp-based refugees)
+- **External demand** (urban refugees)
 
-The original model determines the allocation level for each refugee camp in order to minimize the expected total cost of the system.  
-The cost structure includes:
+A key assumption in this implementation is that:
 
-- deprivation cost from unmet internal demand
-- referral cost from rejected external demand
-- holding cost for remaining inventory
+> Internal demand is prioritized over external demand.
 
-The expected cost function derived in the paper is nonlinear and is approximated using a **piecewise linear MILP formulation**.
+---
 
-### Extension
+## Decision Variables
 
-This project introduces **lateral transshipment between camps**.
+- `X[i]`: allocation to camp *i*
+- `u[i]`: unmet internal demand
+- `r[i]`: rejected external demand
+- `l[i]`: leftover inventory
 
-Additional decision variables allow camps to transfer inventory to one another.  
-This enables camps with surplus inventory to support camps experiencing shortages.
+---
 
-The extended model includes:
+## Objective Function
 
-- allocation decisions
-- transshipment decisions
-- inventory balance constraints
-- transshipment feasibility constraints
+The model minimizes total cost:
 
-## Planned Experiments
+- Deprivation cost (internal unmet demand)
+- Referral cost (external unmet demand)
+- Holding cost (leftover inventory)
 
-The experiments will focus on small-scale instances in order to keep the computational complexity manageable.
+---
 
-### Experiment Factors
+## Key Modeling Features
 
-The following parameters will be varied:
+### 1. Internal Demand Priority
+Internal demand is always satisfied first. External demand is served using the remaining inventory.
 
-- **Total supply level (S)**  
-  Different supply levels will be tested to observe how allocation decisions change when the system becomes more or less resource constrained.
+### 3. Linear Formulation
+All nonlinear relationships are linearized using auxiliary variables, making the model solvable with standard LP solvers.
 
-- **Transshipment cost (c_ij)**  
-  Several transshipment cost levels will be considered to evaluate when inventory transfers between camps become beneficial.
+---
 
-- **Demand**  
-  Instances with different internal and external demand rates across camps will be generated to analyze how demand imbalance affects transshipment decisions.
+## Data
 
-### Performance Metrics
+The model uses two input files:
 
-For each experiment run, the following metrics will be recorded:
+- `data/rates.csv`  
+  Contains internal and external demand rates for each camp.
 
-- total system cost
-- allocation levels for each camp
-- transshipment quantities between camps
-- solver runtime
+- `data/parameters.csv`  
+  Contains cost parameters:
+  - holding cost
+  - deprivation cost
+  - referral cost
 
-## Repository Structure
+---
 
-data/
-    Input parameter files
 
-src/
-    Model implementation scripts
-
-## Tools
-
-Python  
-Gurobi solver
-
-## Installation
-
-Install required packages:
-
-pip install -r requirements.txt
-
-## Current Status
-
-This repository contains the **initial mathematical model implementation (Model v1)**.  
-The piecewise linear expected cost formulation from the original paper will be integrated in later stages of the project.
 
 
 Original link to paper:
