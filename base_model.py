@@ -38,7 +38,7 @@ def build_model(
     referral_cost=2.0,
 ):
     """
-    Allocation-only model with internal demand priority.
+    
 
     Decision variables
     ------------------
@@ -84,15 +84,14 @@ def build_model(
     )
 
     # 3. Internal unmet demand
-    # u[i] = max(lambda_c[i] - X[i], 0)
+    
     model.addConstrs(
         (u[i] >= lambda_c[i] - X[i] for i in camps),
         name="internal_shortage"
     )
 
-    # 4. External rejection after internal demand is served first
-    # r[i] = max(lambda_u[i] - (X[i] - (lambda_c[i] - u[i])), 0)
-    #      = max(lambda_c[i] + lambda_u[i] - X[i] - u[i], 0)
+    # 4. External unmet demand
+    
     model.addConstrs(
         (r[i] >= lambda_c[i] + lambda_u[i] - X[i] - u[i] for i in camps),
         name="external_rejection"
