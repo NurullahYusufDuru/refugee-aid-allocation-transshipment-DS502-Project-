@@ -34,7 +34,7 @@ def build_model(
     total_supply,
     initial_inventory=None,
     holding_cost=1.0,
-    deprivation_cost=10.0,
+    deprivation_cost=50.0,
     referral_cost=2.0,
 ):
     """
