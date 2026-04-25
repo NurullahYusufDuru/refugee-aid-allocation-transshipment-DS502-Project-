@@ -1,4 +1,4 @@
-# Humanitarian Aid Allocation – MDP Reformulation
+# Humanitarian Aid Allocation 
 
 ## Project Overview
 
