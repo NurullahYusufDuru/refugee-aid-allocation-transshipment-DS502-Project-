@@ -53,14 +53,11 @@ A policy defines the allocation decision for each state.
 The MDP formulation enables:
 - Sequential decision making
 - Multi-period planning
-- Extension to stochastic demand
-- Integration of fairness objectives
 
 ## Planned Experiments
 
 We will evaluate the model by varying:
 - Supply levels
-- Demand patterns
 - Cost parameters
 - Number of camps
 
