@@ -1,90 +1,77 @@
-# Humanitarian Aid Allocation Model
+# Humanitarian Aid Allocation – MDP Reformulation
 
-## Overview
+## Project Overview
 
-This project implements a simplified optimization model for allocating humanitarian aid across multiple refugee camps.
+This project studies the allocation of limited humanitarian aid across multiple refugee camps. 
+Each camp has internal demand (camp-based refugees) and external demand (urban refugees). 
+The goal is to allocate available aid efficiently while minimizing humanitarian costs.
 
-The model is based on the paper:
+## Original Model
 
-> *Azizi et al. (2021) – Aid Allocation for Camp-Based and Urban Refugees with Uncertain Demand and Replenishments*
+The original formulation is a deterministic, single-period optimization model. 
+The objective minimizes:
+- Deprivation cost (unmet internal demand)
+- Referral cost (unmet external demand)
+- Holding cost (unused inventory)
 
-The goal is to determine how a central decision-maker should distribute limited inventory to minimize the total cost associated with unmet demand and inventory holding.
+## MDP Reformulation
 
----
+In Deliverable 6, the problem is reformulated as a Markov Decision Process (MDP).
 
-## Model Description
+### State
 
-The model considers:
+The state includes:
+- Total available supply
+- Camp-level inventory
+- Internal demand
+- External demand
 
-- **Internal demand** (camp-based refugees)
-- **External demand** (urban refugees)
+### Action
 
-A key assumption in this implementation is that:
+The action is the allocation decision:
+- How much aid to send to each camp
 
-> Internal demand is prioritized over external demand.
+### Transition
 
----
+- Inventory evolves based on allocation and demand
+- Supply decreases over time (no replenishment)
+- Demand is deterministic
 
-## Decision Variables
+### Cost
 
-- `X[i]`: order up to allocation level to camp *i*
-- `u[i]`: unmet internal demand (auxillary)
-- `r[i]`: rejected external demand (auxillary)
-- `l[i]`: leftover inventory (auxillary)
+The stage cost includes:
+- Internal unmet demand penalty (high priority)
+- External unmet demand penalty
+- Holding cost
 
----
+### Policy
 
-## Objective Function
+A policy defines the allocation decision for each state.
 
-The model minimizes total cost:
+## Key Contribution
 
-- Deprivation cost (internal unmet demand)
-- Referral cost (external unmet demand)
-- Holding cost (leftover inventory)
+The MDP formulation enables:
+- Sequential decision making
+- Multi-period planning
+- Extension to stochastic demand
+- Integration of fairness objectives
 
----
+## Planned Experiments
+
+We will evaluate the model by varying:
+- Supply levels
+- Demand patterns
+- Cost parameters
+- Number of camps
+
+Performance metrics:
+- Total cost
+- Unmet demand
+- Inventory utilization
 
 
-## Data
 
-The model uses two input files:
 
-- `data/rates.csv`  
-  Contains internal and external demand rates for each camp.
 
-- `data/parameters.csv`  
-  Contains cost parameters:
-  - holding cost
-  - deprivation cost
-  - referral cost
-
----
-## Example Results
-
-For a test instance with total supply = 100,000:
-
-Objective value: 36,635.52
-Runtime: 0.0010 seconds
-
-Key observations:
-
--All internal demand is satisfied
--Some external demand remains unmet
--No leftover inventory (all supply is used)
-
----
-
-## Requirements
-
-This project requires:
-
-- Python 3.8+
-- Gurobi Optimizer
-- Python packages:
-  - pandas
-  - gurobipy
----
-
-Original link to paper:
-Azizi, S., Bozkir, C. D. C., Trapp, A. C., Kundakcioglu, O. E., & Kurbanzade, A. K. (2021). Aid Allocation for Camp‐Based and Urban Refugees with Uncertain Demand and Replenishments. Production and Operations Management, 30(12), 4455-4474. https://doi.org/10.1111/poms.13531 (Original work published 2021)
-
+```bash
+python src/mdp.py
