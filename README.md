@@ -72,6 +72,3 @@ Performance metrics:
 
 
 
-
-```bash
-python src/mdp.py
