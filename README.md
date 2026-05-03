@@ -6,7 +6,7 @@ The key feature of the model is the inclusion of **binary activation decisions**
 
 ---
 
-## 📌 Problem Description
+## Problem Description
 
 We consider a setting with:
 - Multiple refugee camps
@@ -25,7 +25,7 @@ while minimizing:
 
 ---
 
-## 🧠 Methodology
+## Methodology
 
 Two solution approaches are implemented:
 
@@ -50,7 +50,7 @@ Two solution approaches are implemented:
 
 ---
 
-## 📊 Computational Experiments
+## Computational Experiments
 
 We conducted **10 experimental runs** with varying:
 - Number of camps
@@ -70,7 +70,7 @@ Each run reports:
 
 ---
 
-## 🔍 Key Findings
+## Key Findings
 
 - The MILP model solves all instances efficiently and provides optimal solutions.
 - The GA produces feasible solutions but with an average gap of ~20%.
@@ -79,14 +79,14 @@ Each run reports:
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 ### Requirements
 
 - Python 3.x
 - Gurobi (with valid license)
 
-  ✍️ Author
+  Author
 
 Nurullah Yusuf Duru
 Özyeğin University – Industrial Engineering
