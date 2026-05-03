@@ -83,7 +83,7 @@ Each run reports:
 ### Requirements
 
 - Python 3.x
-- Gurobi (with valid license)
+- Gurobi
 
   Author
 
