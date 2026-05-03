@@ -1,2 +1,4 @@
 pandas
 gurobipy
+numpy
+time
