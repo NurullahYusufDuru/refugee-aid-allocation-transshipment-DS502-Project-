@@ -1,71 +1,93 @@
-# Humanitarian Aid Allocation 
+# Humanitarian Aid Allocation with Binary Activation Decisions
 
-## Project Overview
+This project studies a humanitarian aid allocation problem in which limited resources must be distributed across multiple refugee camps with both internal and external demand.
 
-This project studies the allocation of limited humanitarian aid across multiple refugee camps. 
-Each camp has internal demand (camp-based refugees) and external demand (urban refugees). 
-The goal is to allocate available aid efficiently while minimizing humanitarian costs.
+The key feature of the model is the inclusion of **binary activation decisions**, which represent whether a specific type of aid is delivered to a particular camp. This reflects the operational reality that delivering aid requires activating logistics such as transportation and coordination.
 
-## Original Model
+---
 
-The original formulation is a deterministic, single-period optimization model. 
-The objective minimizes:
-- Deprivation cost (unmet internal demand)
-- Referral cost (unmet external demand)
-- Holding cost (unused inventory)
+## 📌 Problem Description
 
-## MDP Reformulation
+We consider a setting with:
+- Multiple refugee camps
+- Multiple aid types
+- Limited total supply
+- Internal and external demand at each camp
 
-In Deliverable 6, the problem is reformulated as a Markov Decision Process (MDP).
+The goal is to determine:
+1. Which camp–aid pairs should be activated  
+2. How much aid should be allocated  
 
-### State
+while minimizing:
+- Unmet internal demand (deprivation cost)
+- Unmet external demand (referral cost)
+- Activation costs
 
-The state includes:
-- Total available supply
-- Camp-level inventory
-- Internal demand
-- External demand
+---
 
-### Action
+## 🧠 Methodology
 
-The action is the allocation decision:
-- How much aid to send to each camp
+Two solution approaches are implemented:
 
-### Transition
+### 1. Mixed-Integer Linear Programming (MILP)
 
-- Inventory evolves based on allocation and demand
-- Supply decreases over time (no replenishment)
-- Demand is deterministic
+- Formulated using decision variables for allocation and activation
+- Solved using **Gurobi**
+- Provides **optimal solutions**
 
-### Cost
+---
 
-The stage cost includes:
-- Internal unmet demand penalty (high priority)
-- External unmet demand penalty
-- Holding cost
+### 2. Genetic Algorithm (GA)
 
-### Policy
+- Heuristic approach focusing on **activation decisions**
+- Each solution is a binary matrix \(y_{ik}\)
+- Allocation decisions are computed using a **greedy procedure**
+- Includes:
+  - Selection (tournament)
+  - Crossover (uniform)
+  - Mutation (bit flip)
+  - Repair mechanism for feasibility
 
-A policy defines the allocation decision for each state.
+---
 
-## Key Contribution
+## 📊 Computational Experiments
 
-The MDP formulation enables:
-- Sequential decision making
-- Multi-period planning
-
-## Planned Experiments
-
-We will evaluate the model by varying:
-- Supply levels
-- Cost parameters
+We conducted **10 experimental runs** with varying:
 - Number of camps
+- Number of aid types
+- Constraint parameters (L, C, budget)
 
-Performance metrics:
-- Total cost
-- Unmet demand
-- Inventory utilization
+Results are stored in:
+ds502_experiments.csv
 
 
+Each run reports:
+- Problem size
+- Gurobi objective (optimal)
+- GA objective
+- Optimality gap
+- Runtime
 
+---
+
+## 🔍 Key Findings
+
+- The MILP model solves all instances efficiently and provides optimal solutions.
+- The GA produces feasible solutions but with an average gap of ~20%.
+- The gap increases as problem size grows.
+- The main difficulty lies in selecting the correct **combination of activation decisions**, not the total number of activations.
+
+---
+
+## ▶️ How to Run
+
+### Requirements
+
+- Python 3.x
+- Gurobi (with valid license)
+
+  ✍️ Author
+
+Nurullah Yusuf Duru
+Özyeğin University – Industrial Engineering
 
