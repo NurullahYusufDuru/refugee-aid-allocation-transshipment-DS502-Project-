@@ -75,7 +75,6 @@ Each run reports:
 - The MILP model solves all instances efficiently and provides optimal solutions.
 - The GA produces feasible solutions but with an average gap of ~20%.
 - The gap increases as problem size grows.
-- The main difficulty lies in selecting the correct **combination of activation decisions**, not the total number of activations.
 
 ---
 
